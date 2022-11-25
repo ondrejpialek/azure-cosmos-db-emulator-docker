@@ -21,6 +21,8 @@ RUN powershell.exe -Command $ErrorActionPreference = 'Stop'; \
    Start-Process 'msiexec.exe' -ArgumentList '/i','c:\CosmosDBEmulator\AzureCosmosDB.Emulator.msi','/qn' -Wait
 RUN echo "Installer Done"
 
+RUN md c:\\CosmosDBEmulator\\CosmosDBEmulatorCert
+
 # Expose the required network ports
 EXPOSE 8081
 EXPOSE 8901
