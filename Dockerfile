@@ -1,7 +1,7 @@
 # CosmosDB Emulator Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
-FROM microsoft/windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 # Metadata indicating an image maintainer.
 MAINTAINER mominag@microsoft.com
@@ -20,6 +20,8 @@ RUN echo "Starting Installer"
 RUN powershell.exe -Command $ErrorActionPreference = 'Stop'; \
    Start-Process 'msiexec.exe' -ArgumentList '/i','c:\CosmosDBEmulator\AzureCosmosDB.Emulator.msi','/qn' -Wait
 RUN echo "Installer Done"
+
+RUN md c:\\CosmosDBEmulator\\CosmosDBEmulatorCert
 
 # Expose the required network ports
 EXPOSE 8081
